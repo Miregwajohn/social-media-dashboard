@@ -1,0 +1,235 @@
+/* 1. CSS Variables for Themes */
+
+:root {
+    --bg: hsl(0, 0%, 100%);
+    --top-bg: hsl(225, 100%, 98%);
+    --card-bg: hsl(227, 47%, 96%);
+    --text-primary: hsl(230, 17%, 14%);
+    --text-secondary: hsl(228, 12%, 44%);
+    --toggle-bg: hsl(230, 22%, 74%);
+    --lime-green: hsl(163, 72%, 41%);
+    --bright-red: hsl(356, 69%, 56%);
+}
+
+
+/* Dark Theme Override */
+
+body.dark {
+    --bg: hsl(230, 17%, 14%);
+    --top-bg: hsl(232, 19%, 15%);
+    --card-bg: hsl(228, 28%, 20%);
+    --text-primary: hsl(0, 0%, 100%);
+    --text-secondary: hsl(228, 34%, 66%);
+    --toggle-bg: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+}
+
+
+/* 2. Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    padding: 2rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+
+/* 3. Header */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--top-bg);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}
+
+.toggle-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.toggle-section span {
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+
+/* 4. Toggle Switch */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--toggle-bg);
+    border-radius: 34px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+
+/* 5. Social Cards Section */
+
+.social-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: hsl(228, 28%, 30%);
+}
+
+.card img {
+    width: 20px;
+    margin-bottom: 0.5rem;
+}
+
+.card .username {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.card h2 {
+    font-size: 2.5rem;
+}
+
+.card .label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+}
+
+.card .change-up,
+.card .change-down {
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 1rem;
+}
+
+.card .change-up {
+    color: var(--lime-green);
+}
+
+.card .change-down {
+    color: var(--bright-red);
+}
+
+
+/* 6. Overview Section */
+
+.overview h2 {
+    margin: 2rem 0 1rem;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.overview-card {
+    background-color: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.overview-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+}
+
+.overview-card h3 {
+    font-size: 2rem;
+    margin: 1rem 0 0.5rem;
+}
+
+.overview-card .percent {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+.percent.up {
+    color: var(--lime-green);
+}
+
+.percent.down {
+    color: var(--bright-red);
+}
+
+
+/* 7. Attribution */
+
+footer.attribution {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 3rem;
+}
